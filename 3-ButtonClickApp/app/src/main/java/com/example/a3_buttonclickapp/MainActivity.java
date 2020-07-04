@@ -23,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
         userInput = (EditText) findViewById(R.id.editTextTextPersonName);
         button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
-        textView.setText("");
         textView.setMovementMethod(new ScrollingMovementMethod());
+        if(numTimesClicked >= 1) {
+            textView.setText("");
+        }
         View.OnClickListener ourOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 textView.append(result);
             }
         };
+
         button.setOnClickListener(ourOnClickListener);
 
     }
