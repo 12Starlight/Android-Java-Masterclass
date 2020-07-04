@@ -19,21 +19,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userInput = (EditText) findViewById(R.id.editTextTextPersonName);
-        Button button = (Button) findViewById(R.id.bttn);
+        Button button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
         textView.setText("");
+        userInput.setText("");
         View.OnClickListener ourOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String result = userInput.getText().toString();
                 result += "\n";
                 textView.append(result);
+                userInput.setText("");
             }
         };
-        if(button != null) {
-            button.setOnClickListener(ourOnClickListener);
-        }
+        button.setOnClickListener(ourOnClickListener);
 
     }
 }
