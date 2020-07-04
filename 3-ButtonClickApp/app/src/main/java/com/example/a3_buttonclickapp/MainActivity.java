@@ -11,9 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private EditText userInput;
-    private Button button;
     private TextView textView;
-    private int numTimesClicked = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +19,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userInput = (EditText) findViewById(R.id.editTextTextPersonName);
-        button = (Button) findViewById(R.id.button);
+        Button button = (Button) findViewById(R.id.button);
         textView = (TextView) findViewById(R.id.textView);
         textView.setMovementMethod(new ScrollingMovementMethod());
-        if(numTimesClicked >= 1) {
-            textView.setText("");
-        }
+        textView.setText("");
         View.OnClickListener ourOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numTimesClicked = numTimesClicked + 1;
-                String result = "\nThe button got tapped " + numTimesClicked + " time";
-                if(numTimesClicked != 1) {
-                    result += "s"; // this the same as result = result + "s";
-                }
+                String result = userInput.getText().toString();
+                result += "\n";
                 textView.append(result);
             }
         };
