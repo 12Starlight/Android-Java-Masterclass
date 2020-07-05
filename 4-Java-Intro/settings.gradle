@@ -1,0 +1,3 @@
+include ':learnjava'
+include ':app'
+rootProject.name = "4-Java-Intro"
