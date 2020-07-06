@@ -35,7 +35,13 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         System.out.println(tomSmith.getHandleName());
         System.out.println("Level: " + tomSmith.getLevel());
         System.out.println("Lives: " + tomSmith.getLives());
-        Weapon tomsWeapon = tomSmith.getWeapon();
-        System.out.println(tomsWeapon.getName());
+//        Weapon tomsWeapon = tomSmith.getWeapon();
+//        System.out.println(tomsWeapon.getName());
+
+        System.out.println("\n");
+        System.out.println(tomSmith.getWeapon().getName());
+        Weapon myAxe = new Weapon("Goldshine Axe", 15, 50);
+        tomSmith.setWeapon(myAxe);
+        System.out.println(tomSmith.getWeapon().getName());
     }
 }

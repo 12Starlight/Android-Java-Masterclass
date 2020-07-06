@@ -1,12 +1,20 @@
 package com.example.learnjava;
 
+import java.util.ArrayList;
+
+
 public class Player {
     // fields or instance variables
     private String handleName;
     private int lives;
     private int level;
     private int score;
-    private Weapon weapon;
+    private Weapon weapon; // Object
+    private ArrayList<Loot> inventory; // ArrayList
+//    private Weapon weapon2; // We do not want to do this
+//    private Weapon weapon3;
+//    private Weapon weapon4;
+
 
     public Player() {
         this("Unknown player"); // default name
@@ -29,7 +37,8 @@ public class Player {
         setLives(3);
         setLevel(startingLevel);
         setScore(0);
-        setDefaultWeapon();
+//        setDefaultWeapon();
+        inventory = new ArrayList<>(); // also need initialize ArrayList // diamond
     }
 
 
@@ -88,5 +97,26 @@ public class Player {
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    // Inventory Getters & Setters
+    public ArrayList<Loot> getInventory() {
+        return inventory;
+    }
+
+//    public void setInventory(ArrayList<Loot> inventory) {
+//        this.inventory = inventory;
+//    }
+
+    public void pickUpLoot(Loot newLoot) {
+        inventory.add(newLoot);
+    }
+
+    public boolean dropLoot(Loot loot) {
+        if(this.inventory.contains(loot)) {
+            inventory.remove(loot);
+            return true;
+        }
+        return false;
     }
 }
