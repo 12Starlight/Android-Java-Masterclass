@@ -81,5 +81,11 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         vlad.showInfo();
         vlad.takeDamage(8);
         vlad.showInfo();
+
+        System.out.println("\n========================================");
+        VampireKing boss = new VampireKing("Boss");
+        boss.showInfo();
+        boss.takeDamage(8);
+        boss.showInfo();
     }
 }
