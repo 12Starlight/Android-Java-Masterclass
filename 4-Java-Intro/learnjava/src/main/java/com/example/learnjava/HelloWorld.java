@@ -10,9 +10,24 @@ public class HelloWorld {
 //        tim = "12"; // Java does not allow type changes that differ from how it was declared
         System.out.println(tim);
 
-        int timSalary = 32; // declared and assigned
-        int monthly = timSalary * 4;
-        System.out.println(timSalary);
-        System.out.println(monthly);
+        int timsWeeklySalary = 32; // declared and assigned
+        int timsMonthlySalary = timsWeeklySalary * 4;
+        System.out.println("Weekly salary: " + timsWeeklySalary);
+        System.out.println("Monthly salary: " + timsMonthlySalary);
+
+        int apples = 6;
+        int oranges = 5;
+        int fruit = apples + oranges;
+        System.out.println("I have " + fruit + " fruit.");
+
+        int weeks = 130;
+        double years = weeks / 52.0; // decimals are doubles and floats
+        System.out.println(weeks + " weeks is " + years + " years");
+
+        System.out.println("Hello, " + tim + " here."); // concatenates strings
     }
 }
+
+
+
+
