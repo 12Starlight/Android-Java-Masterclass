@@ -69,5 +69,11 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         enemy.showInfo();
         enemy.takeDamage(11);
         enemy.showInfo();
+
+        System.out.println("\n========================================");
+        Troll prettyTroll = new Troll("Pretty Troll");
+        prettyTroll.showInfo();
+        prettyTroll.takeDamage(8);
+        prettyTroll.takeDamage(30);
     }
 }

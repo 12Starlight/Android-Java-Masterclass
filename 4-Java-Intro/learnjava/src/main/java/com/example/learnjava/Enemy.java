@@ -22,7 +22,11 @@ public class Enemy {
             System.out.println("I took " + damage + " points damage, and have " + remainingHitPoints + " left.");
         } else {
             this.lives -= 1;
-            System.out.println("I have lost a life");
+            if(lives > 0) {
+                System.out.println("I have lost a life, " + this.lives + " lives left.");
+            } else {
+                System.out.println("No lives left, I am dead!");
+            }
         }
     }
 
