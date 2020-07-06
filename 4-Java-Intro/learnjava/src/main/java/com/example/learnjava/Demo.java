@@ -1,5 +1,6 @@
 package com.example.learnjava;
 
+
 public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + f12
     public static void main(String[] args) {
         Player tim = new Player();
@@ -33,15 +34,30 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
 //        Player tomSmith = new Player("Tom Smith"); // constructor 2
         Player tomSmith = new Player("Tom Smith", 8); // constructor 3
         System.out.println(tomSmith.getHandleName());
-        System.out.println("Level: " + tomSmith.getLevel());
-        System.out.println("Lives: " + tomSmith.getLives());
+//        System.out.println("Level: " + tomSmith.getLevel());
+//        System.out.println("Lives: " + tomSmith.getLives());
 //        Weapon tomsWeapon = tomSmith.getWeapon();
 //        System.out.println(tomsWeapon.getName());
 
         System.out.println("\n");
-        System.out.println(tomSmith.getWeapon().getName());
+//        System.out.println(tomSmith.getWeapon().getName());
         Weapon myAxe = new Weapon("Goldshine Axe", 15, 50);
         tomSmith.setWeapon(myAxe);
-        System.out.println(tomSmith.getWeapon().getName());
+//        System.out.println(tomSmith.getWeapon().getName());
+
+        Loot redPotion = new Loot("Red Potion", LootType.POTION, 7);
+        tomSmith.pickUpLoot(redPotion);
+
+        tomSmith.pickUpLoot(new Loot("+3 Chest Armor", LootType.ARMOR, 80));
+        tomSmith.pickUpLoot(new Loot("Ring of Protection + 2", LootType.RING, 40));
+        tomSmith.pickUpLoot(new Loot("Invisibility Potion", LootType.POTION, 35));
+
+        tomSmith.showInventory();
+
+//        Loot bluePotion = new Loot("Blue Potion", LootType.POTION, 6);
+//        boolean wasDeleted = tomSmith.dropLoot(bluePotion); // there is not a blue potion in our inventory
+        boolean wasDeleted = tomSmith.dropLoot(redPotion);
+        System.out.println(wasDeleted);
+        tomSmith.showInventory();
     }
 }

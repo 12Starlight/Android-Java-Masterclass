@@ -37,7 +37,7 @@ public class Player {
         setLives(3);
         setLevel(startingLevel);
         setScore(0);
-//        setDefaultWeapon();
+        setDefaultWeapon();
         inventory = new ArrayList<>(); // also need initialize ArrayList // diamond
     }
 
@@ -118,5 +118,12 @@ public class Player {
             return true;
         }
         return false;
+    }
+
+    public void showInventory() {
+        for(Loot item : inventory) {
+            System.out.println(item.getName());
+        }
+        System.out.println("===================");
     }
 }
