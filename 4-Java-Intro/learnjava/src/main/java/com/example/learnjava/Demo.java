@@ -75,5 +75,11 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         prettyTroll.showInfo();
         prettyTroll.takeDamage(8);
         prettyTroll.takeDamage(30);
+
+        System.out.println("\n========================================");
+        Vampire vlad = new Vampire("Vlad");
+        vlad.showInfo();
+        vlad.takeDamage(8);
+        vlad.showInfo();
     }
 }
