@@ -1,8 +1,6 @@
 package com.example.learnjava;
 
 
-import java.lang.reflect.GenericDeclaration;
-
 public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + f12 // opt + cmd + l reformats code
     public static void main(String[] args) {
         Player tim = new Player();
@@ -87,5 +85,19 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         boss.showInfo();
         boss.takeDamage(8);
         boss.showInfo();
+
+        System.out.println("\n========================================");
+        while (boss.getLives() > 0) {
+            if(boss.dodges()) {
+                continue;
+            }
+            if(boss.runAway()) {
+                System.out.println("Boss ran away");
+                break;
+            } else {
+                boss.takeDamage(12);
+                boss.showInfo();
+            }
+        }
     }
 }
