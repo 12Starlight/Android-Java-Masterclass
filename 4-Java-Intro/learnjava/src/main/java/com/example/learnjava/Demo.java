@@ -1,7 +1,9 @@
 package com.example.learnjava;
 
 
-public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + f12
+import java.lang.reflect.GenericDeclaration;
+
+public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + f12 // opt + cmd + l reformats code
     public static void main(String[] args) {
         Player tim = new Player();
         System.out.println(tim.getHandleName()); // handleName is set to private (access modifier)
@@ -59,5 +61,13 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         boolean wasDeleted = tomSmith.dropLoot(redPotion);
         System.out.println(wasDeleted);
         tomSmith.showInventory();
+
+        System.out.println("\n========================================");
+        Enemy enemy = new Enemy("Test Enemy", 10, 3);
+        enemy.showInfo();
+        enemy.takeDamage(3);
+        enemy.showInfo();
+        enemy.takeDamage(11);
+        enemy.showInfo();
     }
 }
