@@ -6,6 +6,7 @@ public class Player {
     private int lives;
     private int level;
     private int score;
+    private Weapon weapon;
 
     public Player() {
         this("Unknown player"); // default name
@@ -19,7 +20,7 @@ public class Player {
 //        score = 0;
     }
 
-    public Player(String name, int startingLevel) { // Overloading the constructor
+    public Player(String name, int startingLevel) { // Overloading the constructor // Concept of name and parameters is known as the "method signature."
 //        this.handleName = name;
 //        this.lives = 3; // default lives
 //        this.level = startingLevel;
@@ -28,6 +29,7 @@ public class Player {
         setLives(3);
         setLevel(startingLevel);
         setScore(0);
+        setDefaultWeapon();
     }
 
 
@@ -41,13 +43,17 @@ public class Player {
             return;
         }
         this.handleName = handle;
+        setDefaultWeapon();
+    }
+
+    private void setDefaultWeapon() {
+        this.weapon = new Weapon("Sword", 10, 20);
     }
 
     public void setNameAndLevel(String name, int level) {
 //        this.handleName = name;
 //        this.level = level;
         setHandleName(name);
-        setLevel(level);
     }
 
     // Android Studio generates getters and setters for us // cmd + n
@@ -73,5 +79,14 @@ public class Player {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    // Weapon Getters & Setters
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 }
