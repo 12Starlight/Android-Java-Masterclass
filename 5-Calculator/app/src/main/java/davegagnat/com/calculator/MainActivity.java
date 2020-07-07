@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Variables to hold the operands and type of calculations
     private Double operand1 = null;
-    private Double operand2 = null;
+//    private Double operand2 = null; // could be made into a local variable
     private String pendingOperation = "=";
 
 
@@ -74,8 +74,11 @@ public class MainActivity extends AppCompatActivity {
                 Button b = (Button) view;
                 String op = b.getText().toString();
                 String value = newNumber.getText().toString();
-                if(value.length() != 0) {
-                    performOperation(value, op);
+                try {
+                    Double doubleValue = Double.valueOf(value);
+                    performOperation(doubleValue, op);
+                } catch (NumberFormatException e) {
+                    newNumber.setText("");
                 }
                 pendingOperation = op;
                 displayOperation.setText(pendingOperation);
@@ -89,11 +92,11 @@ public class MainActivity extends AppCompatActivity {
         buttonPlus.setOnClickListener(opListener);
     }
 
-    private void performOperation(String value, String operation) {
+    private void performOperation(Double value, String operation) {
         if (null == operand1) {
-            operand1 = Double.valueOf(value);
+            operand1 = value;
         } else {
-            operand2 = Double.valueOf(value);
+            operand2 = value;
 
             if (pendingOperation.equals("=")) {
                 pendingOperation = operation;
