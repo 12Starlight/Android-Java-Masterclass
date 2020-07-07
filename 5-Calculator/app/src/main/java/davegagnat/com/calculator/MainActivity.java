@@ -1,5 +1,6 @@
 package davegagnat.com.calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -12,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText result;
     private EditText newNumber;
     private TextView displayOperation;
+    private final String TEXT_CONTENTS = "TextContents";
 
     // Variables to hold the operands and type of calculations
     private Double operand1 = null;
@@ -124,5 +126,18 @@ public class MainActivity extends AppCompatActivity {
 
         result.setText(operand1.toString());
         newNumber.setText("");
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        result.setText(savedInstanceState.getString(TEXT_CONTENTS));
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(TEXT_CONTENTS, result.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 }
