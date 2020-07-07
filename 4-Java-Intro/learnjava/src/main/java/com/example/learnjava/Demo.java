@@ -141,5 +141,7 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
         conan.showInventory();
 
         System.out.println(conan.score());
+        conan.dropLoot("Cursed Shield");
+        System.out.println(conan.score());
     }
 }

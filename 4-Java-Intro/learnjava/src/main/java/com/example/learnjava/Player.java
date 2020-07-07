@@ -120,6 +120,16 @@ public class Player {
         return false;
     }
 
+    public boolean dropLoot(String lootName) {
+        for(Loot item : inventory) {
+            if(item.getName().equals(lootName)) {
+                inventory.remove(item);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void showInventory() {
         for(Loot item : inventory) {
             System.out.println(item.getName());
