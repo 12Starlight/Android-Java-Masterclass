@@ -86,25 +86,46 @@ public class Demo { // cmd + 1 opens project // cmd + 4 opens run // opt + fn + 
 //        boss.takeDamage(8);
 //        boss.showInfo();
 
-        System.out.println("\n========================================");
-        for(int i = 0; i<10; i++) { // there is no ArrayList to loop through, so we need to use a for loop
-            VampireKing boss = new VampireKing("Boss");
-            boss.showInfo();
+//        System.out.println("\n========================================");
+//        for(int i = 0; i<10; i++) { // there is no ArrayList to loop through, so we need to use a for loop
+//            VampireKing boss = new VampireKing("Boss");
+//            boss.showInfo();
+//
+//            while (boss.getLives() > 0) {
+//                if(boss.dodges()) {
+//                    continue;
+//                }
+//                if(boss.runAway()) {
+//                    System.out.println("Boss ran away");
+//                    break;
+//                } else {
+//                    boss.takeDamage(80);
+//                    boss.showInfo();
+//                }
+//            }
+//            System.out.println("========================================");
+//        }
 
-            while (boss.getLives() > 0) {
-                if(boss.dodges()) {
-                    continue;
-                }
-                if(boss.runAway()) {
-                    System.out.println("Boss ran away");
-                    break;
-                } else {
-                    boss.takeDamage(80);
-                    boss.showInfo();
-                }
+        VampireKing boss = new VampireKing("Boss");
+        boss.showInfo();
+
+        boss.setLives(0);
+
+        do { // do while loop ensures that the code gets executed at least once
+            if(boss.dodges()) {
+                boss.setLives(boss.getLives() + 1);
+                continue;
             }
-            System.out.println("========================================");
-        }
+            if(boss.runAway()) {
+                System.out.println("Boss ran away");
+                break;
+            } else {
+                boss.takeDamage(80);
+                boss.showInfo();
+            }
+        } while (boss.getLives() > 0); // test is not done until the end
+        System.out.println("========================================");
+
 
 //        Player conan = new Player("Conan");
 //        conan.pickUpLoot(new Loot("Invisibility", LootType.POTION, 4));
