@@ -126,4 +126,19 @@ public class Player {
         }
         System.out.println("===================");
     }
+
+    public int score() {
+        int total = 0;
+//        for(int i = 0; i < inventory.size(); i++) { // more efficient for ordinary arrays
+//            Loot currentLoot = inventory.get(i);
+//            System.out.println(currentLoot.getName() + " is worth " + currentLoot.getValue());
+//            total += currentLoot.getValue();
+//        }
+        for(Loot currentLoot : inventory) { // more efficient for ArrayLists
+            System.out.println(currentLoot.getName() + " is worth " + currentLoot.getValue());
+            total += currentLoot.getValue();
+        }
+
+        return total;
+    }
 }
