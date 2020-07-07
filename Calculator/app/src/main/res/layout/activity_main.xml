@@ -21,11 +21,8 @@
         android:focusableInTouchMode="false"
         android:fontFamily="sans-serif"
         android:inputType="numberSigned|numberDecimal"
-
-
         android:textSize="18sp"
         android:textStyle="bold"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +38,6 @@
         android:layout_marginRight="8dp"
         android:textSize="18sp"
         android:textStyle="bold"
-
         app:layout_constraintBaseline_toBaselineOf="@id/newNumber"
         app:layout_constraintEnd_toStartOf="@+id/newNumber"
         app:layout_constraintStart_toStartOf="parent"
