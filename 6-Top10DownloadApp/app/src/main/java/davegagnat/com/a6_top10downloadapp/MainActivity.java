@@ -49,9 +49,11 @@ public class MainActivity extends AppCompatActivity {
             ParsApplications parsApplications = new ParsApplications();
             parsApplications.parse(s);
 
-            ArrayAdapter<FeedEntry> arrayAdapter = new ArrayAdapter<>(
-                    MainActivity.this, R.layout.list_item, parsApplications.getApplications());
-            listApps.setAdapter(arrayAdapter);
+//            ArrayAdapter<FeedEntry> arrayAdapter = new ArrayAdapter<>(
+//                    MainActivity.this, R.layout.list_item, parsApplications.getApplications());
+//            listApps.setAdapter(arrayAdapter);
+            FeedAdapter feedAdapter = new FeedAdapter(MainActivity.this, R.layout.list_record, parsApplications.getApplications());
+            listApps.setAdapter(feedAdapter);
         }
 
         @Override
