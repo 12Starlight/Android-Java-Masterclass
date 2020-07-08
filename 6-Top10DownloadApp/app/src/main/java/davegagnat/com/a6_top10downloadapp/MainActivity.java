@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,19 +19,20 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
     //logt tab
     private static final String TAG = "MainActivity";
+    private ListView listApps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        listApps = (ListView) findViewById(R.id.xmlListView);
 //        while(true) { // this stops the app from finishing and causes a crash
 //            int x = 1;
 //        }
 
         Log.d(TAG, "onCreate: starting AsyncTask");
         DownloadData downloadData = new DownloadData();
-        downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=10/xml");
+        downloadData.execute("http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/topfreeapplications/limit=30/xml");
         Log.d(TAG, "onCreate: onCreate: done");
     }
 
@@ -45,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onPostExecute: parameter is " + s);
             ParsApplications parsApplications = new ParsApplications();
             parsApplications.parse(s);
+
+            ArrayAdapter<FeedEntry> arrayAdapter = new ArrayAdapter<>(
+                    MainActivity.this, R.layout.list_item, parsApplications.getApplications());
+            listApps.setAdapter(arrayAdapter);
         }
 
         @Override

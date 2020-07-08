@@ -55,7 +55,7 @@ public class ParsApplications {
                                 currentRecord.setName(textValue);
                             } else if ("artist".equalsIgnoreCase(tagName)) {
                                 currentRecord.setArtist(textValue);
-                            } else if ("releaseDave".equalsIgnoreCase(tagName)) {
+                            } else if ("releaseDate".equalsIgnoreCase(tagName)) {
                                 currentRecord.setReleaseDate(textValue);
                             } else if ("summary".equalsIgnoreCase(tagName)) {
                                 currentRecord.setSummary(textValue);
