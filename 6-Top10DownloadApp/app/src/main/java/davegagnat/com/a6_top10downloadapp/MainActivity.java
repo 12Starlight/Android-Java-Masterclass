@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -62,11 +63,27 @@ public class MainActivity extends AppCompatActivity {
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 int response = connection.getResponseCode();
                 Log.d(TAG, "downloadXML: The response code was " + response);
-                InputStream inputStream = connection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader reader = new BufferedReader(inputStreamReader);
-            } catch(MalformedURLException e) {
+//                InputStream inputStream = connection.getInputStream();
+//                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+//                BufferedReader reader = new BufferedReader(inputStreamReader);
+                BufferedReader reader = new BufferedReader((new InputStreamReader(connection.getInputStream())));
+
+                int charsRead;
+                char[] inputBuffer = new char[500];
+                while(true) {
+                    charsRead = reader.read(inputBuffer);
+                    if(charsRead < 0) {
+                        break;
+                    }
+                    if(charsRead > 0) {
+                        xmlResult.append(String.copyValueOf(inputBuffer, 0, charsRead));
+                    }
+                }
+                reader.close();
+            } catch(MalformedURLException e) { // order in which the exceptions get caught is important // subclasses first
                 Log.e(TAG, "downloadXML: Invalid URL " + e.getMessage());
+            } catch(IOException e) {
+                Log.e(TAG, "downloadXML: IO Exception reading data: " + e.getMessage());
             }
         }
     }
