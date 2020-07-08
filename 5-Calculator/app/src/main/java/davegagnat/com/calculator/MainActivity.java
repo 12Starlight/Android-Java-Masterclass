@@ -13,12 +13,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText result;
     private EditText newNumber;
     private TextView displayOperation;
-    private final String TEXT_CONTENTS = "TextContents";
 
     // Variables to hold the operands and type of calculations
     private Double operand1 = null;
     //    private Double operand2 = null; // could be made into a local variable
     private String pendingOperation = "=";
+    private static final String STATE_PENDING_OPERATION = "PendingOperation";
+    private static final String STATE_OPERAND1 = "Operand1";
 
 
     @Override
@@ -94,6 +95,23 @@ public class MainActivity extends AppCompatActivity {
         buttonPlus.setOnClickListener(opListener);
     }
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        pendingOperation = savedInstanceState.getString(STATE_PENDING_OPERATION);
+        operand1 = savedInstanceState.getDouble(STATE_OPERAND1);
+        displayOperation.setText(pendingOperation);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(STATE_PENDING_OPERATION, pendingOperation);
+        if (operand1 != null) {
+            outState.putDouble(STATE_OPERAND1, operand1);
+        }
+        super.onSaveInstanceState(outState);
+    }
+
     private void performOperation(Double value, String operation) {
         if (null == operand1) {
             operand1 = value;
@@ -126,18 +144,5 @@ public class MainActivity extends AppCompatActivity {
 
         result.setText(operand1.toString());
         newNumber.setText("");
-    }
-
-
-    @Override
-    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        result.setText(savedInstanceState.getString(TEXT_CONTENTS));
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString(TEXT_CONTENTS, result.getText().toString());
-        super.onSaveInstanceState(outState);
     }
 }
